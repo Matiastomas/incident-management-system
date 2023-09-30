@@ -1,5 +1,27 @@
 <?php
-   include("Controllers/submit-report-text.php")
+
+   include("Controllers/submit-report-text.php");
+
+?>
+<?php
+
+
+// Check if the user is logged in (you can modify this part based on your authentication logic)
+if (!isset($_SESSION['author_name'])) {
+    header("Location: login.php"); // Redirect to the login page if the user is not logged in
+    exit();
+}
+
+$conn;
+
+// Execute the SELECT query to fetch data
+$query = "SELECT * FROM incidents";
+$result = mysqli_query($conn, $query);
+
+if (!$result) {
+    die("Query failed: " . mysqli_error($conn));
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,15 +52,29 @@
 			 <?php
 						 
     
-echo   $_SESSION['author_name'] ;
-echo $_SESSION['author_position'] ;
-echo $_SESSION['author_organization'];
+
 //echo $_SESSION ['std_name'];
 ?>
+
+<table id="example" class="table data-table" style="width:100%; height:400px;">
+        <tr>
+		   <th>Author Name</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Publish Date</th>
+        </tr>
+        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+            <tr>
+			<td><?php echo $row['author_name']; ?></td>
+                <td><?php echo $row['incident_name']; ?></td>
+                <td><?php echo $row['inicdent_content']; ?></td>
+                <td><?php echo $row['publish_at']; ?></td>
+            </tr>
+        <?php } ?>
+    </table>
+	
         </div>
-        <footer>
-        Copyright © 2023  
-        </footer>
+       
     </body>
     <script type = "text/javascript">
 $(document).ready(function(){
