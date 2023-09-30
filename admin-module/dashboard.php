@@ -44,12 +44,12 @@ session_start();
               <i class="bi bi-person-square"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#"><?php echo $_SESSION ['sup_name'];?></a></li>
+              <li><a class="dropdown-item" href="#"><?php echo $_SESSION ['admin_name'];?></a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Go Back To Homepage</a></li>
-              <?php  if($_SESSION["sup_name"]) {
+              <?php  if($_SESSION["admin_name"]) {
 ?>
-<?php echo $_SESSION["sup_name"]; ?>. <a href="logout.php" tite="Logout">Logout
+ <a href="logout.php" tite="Logout">Logout
 <?php
 }else echo "<h1></h1>";
 ?>

@@ -1,5 +1,5 @@
 <?php
-   include("Controllers/fetch-final-documentation.php")
+   include("Controllers/submit-report-text.php")
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,23 +15,24 @@
     
 
       <?php
-        session_start();
-     
-        include "./includes/nav.php";
+        
+        //include "./includes/nav.php";
      
       ?>
        
         <div class="search-section">
 		<form method="Post">
-             <input type="text" class="search-bar" name="topic" placeholder="Incident Title"> </br></br>
-			 <textarea class="text-area" placeholder="Type Incident Full Description"  name="topic"></textarea>
+             <input type="text" class="search-bar" name="title" placeholder="Incident Title"> </br></br>
+			 <textarea class="text-area" placeholder="Type Incident Full Description"  name="content"></textarea>
 			 </br></br>
              <input type="submit" value="Report Incident" name="submit">
 			 </form>
 			 <?php
-			 getSearchResult($conn);			 
+						 
     
-//echo $_SESSION ['std_number'];
+echo   $_SESSION['author_name'] ;
+echo $_SESSION['author_position'] ;
+echo $_SESSION['author_organization'];
 //echo $_SESSION ['std_name'];
 ?>
         </div>

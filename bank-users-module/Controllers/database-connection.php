@@ -5,12 +5,12 @@ server with default setting (user 'root' with no password) */
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('DB_NAME', 'rms');
+define('DB_NAME', 'incident_management_system');
 
 $database_server = "localhost";
 $database_username = "root";
 $database_password = "";
-$database_name = "rms";
+$database_name = "incident_management_system";
  
 
 /* Attempt to connect to MySQL database */
