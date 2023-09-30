@@ -1,6 +1,6 @@
 <?php
    
-   //include("Controllers/process-login.php");
+   include("Controllers/process-login.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,9 +22,9 @@
     <div class="form-container">
         <h2>Login</h2>
         <form method="Post">
-        <input type="radio" name="user" id="red" value="student">
-    <label for="supervisor">Bank Users</label>
-    <input type="radio" name="user" id="green" value="supervisor">
+        <input type="radio" name="user" id="red" value="bank-users">
+    <label for="Bank Users">Bank Users</label>
+    <input type="radio" name="user" id="green" value="admin">
     <label for="green">Admin</label>
    </br></br>   
         <input type="text" class="input-text-shape-login input-size-1" name="username" placeholder="User Name"> <br/><br/>
