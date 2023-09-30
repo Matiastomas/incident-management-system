@@ -5,26 +5,30 @@ require_once("database-connection.php");
 
 function getProgressReportDetails($conn){
 
-    $query ="SELECT  id, sup_name, sup_password, nameassignedStudents  from  supervisor_account";
+    $query ="SELECT  userid, username, bankname, position, Department, account_password  from  bank_users";
     if($result = mysqli_query($conn, $query)){
       if(mysqli_num_rows($result) > 0){
           echo "<table id='example' class='table data-table' style='width:100%'>";
             echo "<thead>";
               echo "<tr>";
                   echo "<th style='width:4%;'>#</th>";
-                  echo "<th>Supervisor's User Name</th>";
-                  echo "<th>Password</th>";
-                  echo "<th>Assigned Students</th>";
+                  echo "<th> User Name</th>";
+                  echo "<th>Bank Name</th>";
+                  echo "<th>Department</th>";
+                  echo "<th>Position</th>";
+                  echo "<th>Passwords</th>";
                   echo "<th>Action</th>";
               echo "</thead>";    
               echo "</tr>";
           while($row = mysqli_fetch_array($result)){
               echo "<tbody>";
               echo "<tr>";
-                  echo "<td>" . $row['id'] . "</td>";
-                  echo "<td>" . $row['sup_name'] . "</td>";
-                  echo "<td>" . $row['sup_password'] . "</td>";
-                  echo "<td>" . $row['nameassignedStudents'] . "</td>";
+                  echo "<td>" . $row['userid'] . "</td>";
+                  echo "<td>" . $row['username'] . "</td>";
+                  echo "<td>" . $row['bankname'] . "</td>";
+                  echo "<td>" . $row['Department'] . "</td>";
+                  echo "<td>" . $row['position'] . "</td>";
+                  echo "<td>" . $row['account_password'] . "</td>";
                   echo "<td><a href='' class='btn .me-5 btn-danger'>Delete Account</a></br></br><a href='' class='btn btn-primary'>Update Account</a></td>";
                  
               echo "</tr>";

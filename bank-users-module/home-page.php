@@ -23,8 +23,8 @@
        
         <div class="search-section">
 		<form method="Post">
-             <input type="text" class="search-bar" name="topic" placeholder="Search for Past Research Here"> </br></br>
-			 <textarea class="text-area" name="topic"></textarea>
+             <input type="text" class="search-bar" name="topic" placeholder="Incident Title"> </br></br>
+			 <textarea class="text-area" placeholder="Type Incident Full Description"  name="topic"></textarea>
 			 </br></br>
              <input type="submit" value="Report Incident" name="submit">
 			 </form>

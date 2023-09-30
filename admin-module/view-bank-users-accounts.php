@@ -1,6 +1,10 @@
-
 <?php
- include("Controllers/add-bank.php");
+
+session_start();
+
+?>
+<?php
+ include("Controllers/fetch-supervisor-accounts.php")
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,31 +34,28 @@
      include "./includes/side-menu.php";
      ?>
         
-        <main class="mt-5 pb-3 pt-3">
+        <main class="mt-5 pt-3">
   <div class="container-fluid">
   <div class="row">
-      <div class="col-md-12 fw-bold fs-3">Create Bank Users Accounts</div>
+      <div class="col-md-12 fw-bold fs-3">Manage Bank Users Accounts</div>
     </div>
-      <div class="main-section-create-account">
+    <div class="row mt-2">
+      <div class="col-md-12">
+        <div class="card-table">
+          <div class="card-header">
+            Acccout Details
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
     
-            <form method ="post">
-                <label>Bank User Name</label> </br>
-                <input type="text" class="form-control" placeholder="Bank User Name" name="user_name"> </br>
-                <label>Bank  Name</label> </br>
-                <input type="text" class="form-control" placeholder="Bank Name" name="bank_name"> </br>
-                <label>Department</label> </br>
-                <input type="text" class="form-control" placeholder="Department" name="department"> </br>
-                <label>Position</label> </br>
-                <input type="text" class="form-control" placeholder="Position" name="position"> </br>
-                <label>Password</label>
-                <input type="text" class="form-control" placeholder="password" name="password"></br>
-                <input type="submit" value="Create Account" class="btn btn-dark" name ="submit">
-            <?php
-
-            
+            <?php 
+            getProgressReportDetails( $conn);
             ?>
-            </form>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
   </div>
 </main>
 <!-- Main Content End -->

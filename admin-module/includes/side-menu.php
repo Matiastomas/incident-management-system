@@ -27,11 +27,11 @@
           <hr class="dropdown-divider">
         </li> 
         <li>
-          <a href="" class="nav-link px-3">
+          <a href="view-bank-users-accounts.php" class="nav-link px-3">
             <span class="me-2">
               <i class="bi bi-archive"></i>
             </span>
-            <span class="fw-bold">Incident Posts</span>
+            <span class="fw-bold">Manage Accounts</span>
           </a>
         </li>
         <li class="my-4">
