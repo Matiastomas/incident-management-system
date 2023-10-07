@@ -11,16 +11,16 @@ if(isset($_REQUEST['id']) && !empty($_POST["id"])){
 //Get Accet/rejct value from select
 //Get Comments
     
-$studentProjectTopicId = $_POST["id"];
-$acceptanceStatus = $_POST ["topicstatus"];
+$incidentId = $_POST["id"];
+$Status = $_POST ["incidentstatus"];
 $comment = $_POST ['comment'];
-  if (!empty($acceptanceStatus)){
+  if (!empty($Status)){
     
-      $sql = "UPDATE topic_submission SET subStatus ='$acceptanceStatus', Comments='$comment' WHERE id='$studentProjectTopicId'";
+      $sql = "UPDATE incidents SET Incidentstatus ='$Status', Comments='$comment' WHERE incident_id='$incidentId'";
 
       if (mysqli_query($conn, $sql)) {
         
-        header("location:project-topics-report.php");
+        header("location:incident-reports.php");
     
         exit();
 

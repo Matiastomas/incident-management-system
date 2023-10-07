@@ -1,13 +1,11 @@
-
 <?php
- include("Controllers/add-bank.php");
-
-
+ include("Controllers/process-topic-acceptance.php");
+?>
+<?php
 
 session_start();
 
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,31 +32,26 @@ session_start();
      ?>
       <?php
      include "./includes/side-menu.php";
+     
      ?>
         
-        <main class="mt-5 pb-3 pt-3">
+        <main class="mt-5 pt-3">
   <div class="container-fluid">
   <div class="row">
-      <div class="col-md-12 fw-bold fs-3">Create Bank Users Accounts</div>
+      <div class="col-md-12 fw-bold fs-3">Update Incident Status</div>
     </div>
       <div class="main-section-create-account">
-    
             <form method ="post">
-                <label>Bank User Name</label> </br>
-                <input type="text" class="form-control" placeholder="Bank User Name" name="user_name"> </br>
-                <label>Bank  Name</label> </br>
-                <input type="text" class="form-control" placeholder="Bank Name" name="bank_name"> </br>
-                <label>Department</label> </br>
-                <input type="text" class="form-control" placeholder="Department" name="department"> </br>
-                <label>Position</label> </br>
-                <input type="text" class="form-control" placeholder="Position" name="position"> </br>
-                <label>Password</label>
-                <input type="text" class="form-control" placeholder="password" name="password"></br>
-                <input type="submit" value="Create Account" class="btn btn-dark" name ="submit">
-            <?php
+               
+                <input type="hidden" name="id" value="<?php echo trim($_GET["id"]);?>"/>
+                <select class="select" name="incidentstatus">
+                    <option  id="">Solved</option>
+                    <option  id="">In Progress</option>
+                </select> </br></br>
+                <label>Provide Comments</label> </br>
+                <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></br></br>
+                <input type="submit" value="Submit" class="btn btn-dark" name ="submit">
 
-            
-            ?>
             </form>
         </div>
   </div>
