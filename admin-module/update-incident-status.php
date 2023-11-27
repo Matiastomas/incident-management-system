@@ -1,5 +1,5 @@
 <?php
- include("Controllers/process-topic-acceptance.php");
+ include("Controllers/process-incident-status.php");
 ?>
 <?php
 

@@ -10,7 +10,7 @@ if (isset($_POST['username'])) {
 
     if ($userType == "bank-users") {
   
-      echo "hhhh";
+      
       // Select student number and password from student_account table
       $sql = "SELECT * FROM bank_users WHERE username='$userName' AND account_password ='$passWord'";
       $result = mysqli_query($conn, $sql);

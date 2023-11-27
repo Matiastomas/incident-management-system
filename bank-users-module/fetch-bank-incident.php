@@ -1,5 +1,11 @@
 <?php
-include("Controllers/submit-report-text.php");
+
+   include("Controllers/submit-report-text.php");
+
+?>
+
+<?php
+
 
 // Check if the user is logged in (you can modify this part based on your authentication logic)
 if (!isset($_SESSION['author_name'])) {
@@ -7,42 +13,78 @@ if (!isset($_SESSION['author_name'])) {
     exit();
 }
 
-$conn; // Your database connection
 
-// Check if form is submitted via POST
+$result ='';
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $searchBank = $_POST['bankName'] ?? '';
     $searchDate = $_POST['selectedDate'] ?? '';
 
-    
+    // Check for empty inputs or manipulate date format as needed for your database
+    // For instance, assuming $searchDate is in 'Y-m-d' format, modify it to match your database date format
+
     // Construct the query based on the provided search parameters
     $query = "SELECT * FROM incidents WHERE author_organization = '$searchBank' AND  publish_at='$searchDate'";
 
 
     // Execute the constructed query
     $result = mysqli_query($conn, $query);
-    if (!$result) {
-        die("Error: " . mysqli_error($conn));
-    }
-    if (mysqli_num_rows($result) == 0) {
-      
-      echo '<script>alert("No incidents found based on the provided criteria.");</script>';
-       // If form is not submitted, fetch all incidents
-    $query = "SELECT * FROM incidents";
-    $result = mysqli_query($conn, $query);
-    if (!$result) {
-        die("Error: " . mysqli_error($conn));
-    }
+    
+  }
+
+  
+  function displaySearch($result, $conn){
+    $tableContent = '';
+// Check for query execution and generate table content or display message
+if ($result) {
+  if (mysqli_num_rows($result) > 0) {
+      $tableContent .= '<table id="example" class="table data-table" style="width:100%; height:400px;">
+          <!-- Table headers -->
+          <tr>
+              <th>Author Name</th>
+              <th>Bank</th>
+              <th>Incident Title</th>
+              <th>Content</th>
+              <th>Status</th>
+              <th>Comments</th>
+              <th>Publish Date</th>
+              <th>Incident pdf file</th>
+              <th>Action</th>
+          </tr>';
+
+      // Generate table rows based on the query result
+      while ($row = mysqli_fetch_assoc($result)) {
+          // Append rows to the table content
+          $tableContent .= '<tr>';
+          $tableContent .= '<td>' . $row['author_name'] . '</td>';
+          $tableContent .= '<td>' . $row['author_organization'] . '</td>';
+          $tableContent .= '<td>' . $row['incident_name'] . '</td>';
+          $tableContent .= '<td>' . $row['inicdent_content'] . '</td>';
+          $tableContent .= '<td>' . $row['Incidentstatus'] . '</td>';
+          $tableContent .= '<td>' . $row['Comments'] . '</td>';
+          $tableContent .= '<td>' . $row['publish_at'] . '</td>';
+          $tableContent .= '<td><a href="http://localhost/incident-management-system/bank-users-module/pdf/' . $row['document_path'] . '" target="_blank">Read Report in Pdf</a></td>';
+          $tableContent .= '<td><a href="update-incident-status.php?id=' . $row['incident_id'] . '" class="btn btn-dark">Update Incident Status</a><br><br></td>';
+          $tableContent .= '</tr>';
+      }
+
+      $tableContent .= '</table>';
+  } else {
+      // Display a message if no incidents found
+      $tableContent .= '<p>No incidents found based on the provided criteria.</p>';
   }
 } else {
-    // If form is not submitted, fetch all incidents
-    $query = "SELECT * FROM incidents";
-    $result = mysqli_query($conn, $query);
-    if (!$result) {
-        die("Error: " . mysqli_error($conn));
-    }
+  // Handle errors or display a message if query fails
+  $tableContent .= "Error: " . mysqli_error($conn);
 }
+
+  }
+
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -112,40 +154,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
           <div class="card-body">
             <div class="table-responsive">
-		
 
-<table id="example" class="table data-table" style="width:100%; height:400px;">
-        <tr>
-		   <th>Author Name</th>
-           <th>Bank</th>
-		   <th>Incident Title</th>            
-            <th>Content</th>
-            <th>Status</th>
-            <th>Comments</th>
-            <th>Publish Date</th>
-            <th>Incident pdf file</th>
-            <th>Action</th>
             
-        </tr>
-        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-            <tr>
-            <td><?php echo $row['author_name']; ?></td>
-            <td><?php echo $row['author_organization']; ?></td>
-<td><?php echo $row['incident_name']; ?></td>
-<td><?php echo $row['inicdent_content']; ?></td>
-<td><?php echo $row['Incidentstatus']; ?></td>
-<td><?php echo $row['Comments']; ?></td>
-<td><?php echo $row['publish_at']; ?></td>
 
-<td><a href="http://localhost/incident-management-system/bank-users-module/pdf/<?php echo $row['document_path']; ?>" target="_blank">Read Report in Pdf</a></td>
+<?php
 
-<td>
-    <a href="update-incident-status.php?id=<?php echo $row['incident_id']; ?>" class="btn btn-dark">Update Incident Status</a><br><br>
-</td>
+displaySearch($result, $conn);
+?>
 
-            </tr>
-        <?php } ?>
-    </table>
 	
     </div>
           </div>

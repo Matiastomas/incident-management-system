@@ -13,7 +13,7 @@ require_once("database-connection.php");
      $position= $_POST ['position'];
      $department= $_POST ['department'];
      $bankUserPassword= $_POST ['password'];
-     $query = "INSERT into bank_users  (username, bankname, position, Department, account_password) VALUES('$bankUserName','$bankName', '$position', '$department', '$bankUserPassword')";
+     $query = "INSERT into bank_users  (username, bankname, position, Department, account_password)VALUES('$bankUserName','$bankName', '$position', '$department', '$bankUserPassword')";
       
       if (mysqli_query($conn, $query)) {
         echo "<p style='color:red'>New record created successfully</p>";

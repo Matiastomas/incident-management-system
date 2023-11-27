@@ -3,7 +3,7 @@
 require_once("database-connection.php");
  $conn;
 
-function getProgressReportDetails($conn){
+function getAccountDetails($conn){
 
     $query ="SELECT  userid, username, bankname, position, Department, account_password  from  bank_users";
     if($result = mysqli_query($conn, $query)){

@@ -4,7 +4,7 @@ session_start();
 
 ?>
 <?php
- include("Controllers/fetch-supervisor-accounts.php")
+ include("Controllers/fetch-bank-user-accounts.php")
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,7 +49,7 @@ session_start();
             <div class="table-responsive">
     
             <?php 
-            getProgressReportDetails( $conn);
+           getAccountDetails( $conn);
             ?>
             </div>
           </div>
