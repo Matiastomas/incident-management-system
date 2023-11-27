@@ -46,7 +46,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html>
+
     <head>
+    <style>
+    /* Basic styling for the form */
+    .form {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    .form p {
+      margin-bottom: 5px;
+    }
+
+    .form .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form .form-control {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .form button {
+      padding: 8px 15px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    /* Responsive styling for smaller screens */
+    @media (max-width: 768px) {
+      .form {
+        width: 90%;
+      }
+    }
+  </style>
         <title></title>
         <title></title>
         <meta charset="UTF-8">
@@ -87,23 +130,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Existing HTML code -->
 
 <!-- ... -->
-
 <div class="row mt-4">
-    <div class="col-md-6">
-        <form action="" method="Post" class="form">
-            <div class="form-group">
-                <p>Enter Bank Name:</p>
-                <input type="text" class="form-control" id="bankName" name="bankName" placeholder="Enter bank name">
-            </div>
-            <div class="form-group">
-                <p>Select Date:</p>
-                <input type="date" class="form-control" id="selectedDate" name="selectedDate">
-            </div>
-            <button type="submit" class="btn btn-primary">Filter Incidents</button>
-        </form>
-    </div>
+  <div class="col-md-6">
+    <form action="" method="Post" class="form">
+      <div class="form-group">
+        <p>Enter Bank Name:</p>
+        <input type="text" class="form-control" id="bankName" name="bankName" placeholder="Enter bank name">
+      </div>
+      <div class="form-group">
+        <p>Select Date:</p>
+        <input type="date" class="form-control" id="selectedDate" name="selectedDate">
+      </div>
+      <button type="submit" class="btn btn-primary">Search For  Incidents</button>
+    </form>
+  </div>
 </div>
-
 <!-- ... -->
 
   <div class="container-fluid">
