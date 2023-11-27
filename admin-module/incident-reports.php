@@ -11,11 +11,42 @@ require_once("Controllers/database-connection.php");
 
  $conn;
 
-// Execute the SELECT query to fetch data
-$query = "SELECT * FROM incidents";
-$result = mysqli_query($conn, $query);
 
+ $conn; // Your database connection
 
+ // Check if form is submitted via POST
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+     $searchBank = $_POST['bankName'] ?? '';
+     $searchDate = $_POST['selectedDate'] ?? '';
+ 
+     
+     // Construct the query based on the provided search parameters
+     $query = "SELECT * FROM incidents WHERE author_organization = '$searchBank' AND  publish_at='$searchDate'";
+ 
+ 
+     // Execute the constructed query
+     $result = mysqli_query($conn, $query);
+     if (!$result) {
+         die("Error: " . mysqli_error($conn));
+     }
+     if (mysqli_num_rows($result) == 0) {
+       
+       echo '<script>alert("No incidents found based on the provided criteria.");</script>';
+        // If form is not submitted, fetch all incidents
+     $query = "SELECT * FROM incidents";
+     $result = mysqli_query($conn, $query);
+     if (!$result) {
+         die("Error: " . mysqli_error($conn));
+     }
+   }
+ } else {
+     // If form is not submitted, fetch all incidents
+     $query = "SELECT * FROM incidents";
+     $result = mysqli_query($conn, $query);
+     if (!$result) {
+         die("Error: " . mysqli_error($conn));
+     }
+ }
 
 
 ?>
