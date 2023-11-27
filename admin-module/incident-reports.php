@@ -111,6 +111,24 @@ require_once("Controllers/database-connection.php");
      ?>
        
        <main class="mt-5 pt-3">
+        <!-- ... -->
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <form action="" method="Post" class="form">
+            <div class="form-group">
+                <p>Enter Bank Name:</p>
+                <input type="text" class="form-control" id="bankName" name="bankName" placeholder="Enter bank name">
+            </div>
+            <div class="form-group">
+                <p>Select Date:</p>
+                <input type="date" class="form-control" id="selectedDate" name="selectedDate">
+            </div>
+            <button type="submit" class="btn btn-primary">Filter Incidents</button>
+        </form>
+    </div>
+</div>
+
   <div class="container-fluid">
   <div class="row">
       <div class="col-md-12 fw-bold fs-3">Incident Report</div>
